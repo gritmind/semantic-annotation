@@ -2,5 +2,5 @@
 
 
 ## Contribution
-* Improve the model performance of previous research (Dollmann et al., 2016)
-* 
+* Improve the model performance of previous research model, REaCT (Dollmann et al., 2016)
+* Design new feature set modeled on Language Frame.
