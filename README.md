@@ -2,5 +2,5 @@
 
 
 ## Contribution
-* Improve the performance model from previous research
+* Improve the model performance of previous research
 * 
