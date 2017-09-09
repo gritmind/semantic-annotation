@@ -2,5 +2,5 @@
 
 
 ## Contribution
-* Improve the model performance of previous research
+* Improve the model performance of previous research (Dollmann et al., 2016)
 * 
