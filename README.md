@@ -11,3 +11,6 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 * Improve the model performance of previous research model, REaCT (Dollmann et al., 2016)
 * Design new feature set modeled on Language Frame
 * 
+
+## Summary
+* stemming is better than lemmatization in this research (cf. comparison between two ([jupyter notebook]()))
