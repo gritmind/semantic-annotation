@@ -13,4 +13,4 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 * 
 
 ## Summary
-* stemming is better than lemmatization in this research (cf. comparison between two ([jupyter notebook]()))
+* stemming is better than lemmatization in our problem (cf. [jupyter notebook]())
