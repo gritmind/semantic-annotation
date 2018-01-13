@@ -7,5 +7,7 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 
 
 ## Contribution
+* Text preprocessing (rule list) for specific dataset (especially for improving the performance of parsers)
 * Improve the model performance of previous research model, REaCT (Dollmann et al., 2016)
-* Design new feature set modeled on Language Frame.
+* Design new feature set modeled on Language Frame
+* 
