@@ -8,12 +8,12 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 
 ## Contribution
 * Text preprocessing (rule list) for specific dataset (especially for improving the performance of parsers)
+* Design elaborate syntactic features with constituency and dependency parsers (Dependency parser is more sensitive to represent the type of word and clause)
 * Improve the model performance of previous research model, REaCT (Dollmann et al., 2016)
-* Design new feature set modeled on Language Frame
-* 
 
 ## Summary
 * Stemming is better than lemmatization in our problem (cf. [jupyter notebook](https://github.com/gritmind/semantic-annotation/blob/master/jupyter-notebook/stemming_vs_lemmatization.ipynb))
 * Data cleaning/preprocessing, feature engineering are closely related to each other for both input and output to parsers.
 * Elaborate syntactic features are based on tree sturcture (Constituency parser) and dependent type between two words (Dependency parser). We can distinguish all kinds of clauses by using dependent type (Dependency parser is more sensitive than Constituency in terms of grouping words).
 * Optimization with validation set is only to find the best hyperparameter set via knowing overfitting point. Best features are not optimized with validation, but just selected (among representative sets) after calculating test error. This is similar to model selection based on test error. 
+* Dependency relations are more elaborate than tree structure to represent word type (object of preposition or direct object), clause type (relative caluse or adverbial clause)
