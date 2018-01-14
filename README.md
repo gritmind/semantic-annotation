@@ -15,4 +15,5 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 ## Summary
 * Stemming is better than lemmatization in our problem (cf. [jupyter notebook](https://github.com/gritmind/semantic-annotation/blob/master/jupyter-notebook/stemming_vs_lemmatization.ipynb))
 * Data cleaning/preprocessing, feature engineering are closely related to each other for both input and output to parsers.
-* Elaborate syntactic features are based on tree sturcture (Constituency parser) and dependent type between two words (Dependency parser). We can distinguish all kinds of clauses by using dependent type (Dependency parser is more sensitive than Constituency in terms of grouping words).  
+* Elaborate syntactic features are based on tree sturcture (Constituency parser) and dependent type between two words (Dependency parser). We can distinguish all kinds of clauses by using dependent type (Dependency parser is more sensitive than Constituency in terms of grouping words).
+* Optimization with validation set is only to find the best hyperparameter set. Best features are not optimized with validation, but just selected (among representative sets) after testing. This is similar to model selection based on test error. 
