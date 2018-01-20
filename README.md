@@ -1,6 +1,6 @@
 # Improving Classifier for Semantic Annotation of Software Requirements with Elaborate Syntactic Structure
 
-It is hard for developers to clearly understand software requirements becuase of ambiguous and incomplete expressions. We solve this problem using Natural Language Processing (NLP) or Semantic Annotation (SA) with pre-defined semantic categories. We expect that after solving the problem, the readability can be improved even with ambiguities and give feedback to users when incomplete sentences. With small specific dataset, text preprocessing and feature engineering with elaborate syntactic structure were constructed for our classifier. We improve the performance of previous model in both averaged score and each category score. 
+It is hard for developers to clearly understand software requirements becuase of ambiguous and incomplete expressions. We solve this problem using Natural Language Processing (NLP) or Semantic Annotation (SA) with pre-defined semantic categories. We expect that after solving the problem, the readability can be improved even with ambiguities and give feedback to users when incomplete sentences. With small specific dataset, text preprocessing and feature engineering with elaborate syntactic structure by using parsers, were constructed for our classifier. We improve the performance of previous model in both averaged score and each category score. 
 
 
 
