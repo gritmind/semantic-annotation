@@ -23,3 +23,6 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 * Dependency relations are more elaborate than tree structure to represent word type (object of preposition or direct object), clause type (relative caluse or adverbial clause) (check: [De.Marneffe et al., 2008](https://nlp.stanford.edu/software/dependencies_manual.pdf))
 * Dimension reduction techniques (PCA, univariate selection) were ineffective in our problem, meaning that even with high and sparse vector, all signals were important.
 * With syntactic features elaborately designed by parsers (and bag of n-grams), logistic regression as linear model also got high performances even with complex sequential problem. (Power of feature engineering!)
+* SVM and Voting classfier were the best model in Micro-averaged F1 and Macro-averaged F1, respectively.
+
+
