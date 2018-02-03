@@ -12,6 +12,11 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 
 ## Usage
 
+* parameters.ini
+* stanford parser path to feature_design.py
+
+
+
 
 ## Contribution
 * Text preprocessing (rule list) for specific dataset (especially for improving the performance of parsers)
