@@ -13,7 +13,8 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 ## Usage
 
 * parameters.ini (specify hyperparameters, path, etc)
-* 
+* must choose only one  
+* choose one at least
 
 
 
