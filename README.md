@@ -32,7 +32,7 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 * Dimension reduction techniques (PCA, univariate selection) were ineffective in our problem, meaning that even with high and sparse vector, all signals were important.
 * With syntactic features elaborately designed by parsers (and bag of n-grams), logistic regression as linear model also got high performances even with complex sequential problem. (Power of feature engineering!)
 * SVM and Voting classfier were the best model in Micro-averaged F1 and Macro-averaged F1, respectively.
-
+* Non-linear models are more sensitive to hyperparameter setting than linear models. (even random seed to split dataset)
 
 ## Acknowledgement
 Korea Institute of Science and Technology Information (KISTI) 
