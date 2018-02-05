@@ -1,0 +1,9 @@
+can	27
+would	5
+could	4
+want	1
+may	1
+i	1
+wo	1
+n't	1
+will	1

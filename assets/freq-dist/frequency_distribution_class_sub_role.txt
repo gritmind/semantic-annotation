@@ -1,0 +1,6 @@
+i	30
+user	6
+they	1
+someon	1
+admin	1
+we	1
