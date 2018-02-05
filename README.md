@@ -26,7 +26,7 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 ```
 python 1_data_preparation.py --stemming
 ```
-(arg settting: choose only one {--stemming, --lemmatization})
+ * arg set: choose only one {--stemming, --lemmatization}
 
 ![](/assets/img/img1.PNG)
 
@@ -35,12 +35,19 @@ python 1_data_preparation.py --stemming
 ```
 python 2_feature_extraction.py --use_1gram --use_2gram --use_stanford_pos --use_stanford_parser --use_rule --use_spacy_pos --use_spacy_chunk --use_spacy_parser
 ``` 
-(arg setting; choose one at least {--use_1gram, --use_2gram, --use_3gram, --use_5gram, --use_classes_1gram, --use_stanford_pos, --use_stanford_parser, --use_rule, --use_spacy_pos, --use_spacy_chunk, --use_spacy_parser})
+ * arg set: choose one at least {--use_1gram, --use_2gram, --use_3gram, --use_5gram, --use_classes_1gram, --use_stanford_pos, --use_stanford_parser, --use_rule, --use_spacy_pos, --use_spacy_chunk, --use_spacy_parser}
 
 ![](/assets/img/img2.PNG)
 
+3. Train and Evaluate Model
 
+```
+python 3_train_and_test.py --use_fa --use_fb --use_fc --use_fd --model_svm
+``` 
+ * arg set1: choose one at least {--use_1gram, --use_2gram, --use_3gram, --use_5gram }
+ * arg set2: choose only one {--model_lr, --model_pa, --model_nb, --model_knn, --model_dt, --model_svm, --model_et, --model_rf, --model_vc, --model_fnn, --model_cnn, --model_rnn}
 
+![](/assets/img/img3.PNG)
 
 ## Contribution
 * Text preprocessing (rule list) for specific dataset (especially for improving the performance of parsers)
