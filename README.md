@@ -16,11 +16,20 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 
 ## Usage
 
-* parameters.ini (specify hyperparameters, path, etc)
+0. Write down `parameters.ini` (e.g. hyperparameters, path, etc)
+
 * must choose only one  
 * choose one at least
 
+1. Data Preparation
 
+`python 1_data_preparation.py --stemming` (arg; choose only one {--stemming, --lemmatization})
+
+![](/assets/img/img1.PNG)
+
+2. Feature Extraction
+
+`python 2_feature_extraction.py --use_1gram --use_2gram --use_stanford_pos --use_stanford_parser --use_rule --use_spacy_pos --use_spacy_chunk --use_spacy_parser` (arg; choose one at least {--use_1gram, --use_2gram, --use_3gram, --use_5gram, --use_classes_1gram, --use_stanford_pos, --use_stanford_parser, --use_rule, --use_spacy_pos, --use_spacy_chunk, --use_spacy_parser})
 
 
 ## Contribution
