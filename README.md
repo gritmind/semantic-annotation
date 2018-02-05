@@ -63,7 +63,7 @@ python 3_train_and_test.py --use_fa --use_fb --use_fc --use_fd --model_svm
 * Non-linear models are more sensitive to hyperparameter setting than linear models. (even random seed to split dataset)
 
 ## Acknowledgement
-Korea Institute of Science and Technology Information (KISTI) 
-University of Science and Technology (UST), Korea 
-University of Paderborn, Germany
+Korea Institute of Science and Technology Information (KISTI) <br>
+University of Science and Technology (UST), Korea <br>
+University of Paderborn, Germany <br>
 2017.12 ~ 2017.05
