@@ -1,3 +1,3 @@
-# ÇØ´ç Æú´õ¿¡ ÀÖ´Â freq distribution ÆÄÀÏµéÀº ¾Æ¹«·± threshold »èÁ¦°¡ ÀÌ·ïÁöÁö ¾ÊÀº ¼ø¼öÇÑ µ¥ÀÌÅÍÀÇ Åë°èÀÓ
-# vocabµéÀº mainÇÔ¼ö¿¡¼­ threshold »èÁ¦¸¦ °ÅÃÄ¼­ ÀÚµ¿ÀûÀ¸·Î »ý¼ºµÊ
+* í•´ë‹¹ í´ë”ì— ìžˆëŠ” freq distribution íŒŒì¼ë“¤ì€ ì•„ë¬´ëŸ° threshold ì‚­ì œê°€ ì´ë¤„ì§€ì§€ ì•Šì€ ìˆœìˆ˜í•œ ë°ì´í„°ì˜ í†µê³„ìž„
+* vocabë“¤ì€ mainí•¨ìˆ˜ì—ì„œ threshold ì‚­ì œë¥¼ ê±°ì³ì„œ ìžë™ì ìœ¼ë¡œ ìƒì„±ë¨
 
