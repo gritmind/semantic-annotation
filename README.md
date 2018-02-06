@@ -4,12 +4,14 @@ It is hard for developers to clearly understand software requirements becuase of
 
 
 ## Prerequisites
-* NLTK
-* Pandas
-* Scikit-learn
-* Keras (tensorflow backend)
-* spaCy
-* Stanford NLP
+* nltk 3.2.5
+* pandas 0.20.3
+* scikit-learn 0.19.1
+* keras 2.0.9
+* tensorflow 1.1.0
+* spacy 0.101.0
+* stanford parser 3.7.0
+
 
 ## Dataset
 Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/anthology/D16-1186)'s contribution because they manually constructed it (you can download it in [here](https://drive.google.com/open?id=1dabiJGg96PrXJX0KsLRGvJNeMILG8rRt)). We converted .ann format (original) to a single .json file for modification and converted .json to .txt file (conll-format) for training models. Actually, such conversions were very tedious because there were many exceptions (cf. jupyer notebooks in dataset folder).
