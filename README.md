@@ -62,7 +62,7 @@ python 3_train_and_test.py --use_fa --use_fb --use_fc --use_fd --model_svm
 * Dependency relations are more elaborate than tree structure to represent word type (object of preposition or direct object), clause type (relative caluse or adverbial clause) (check: [De.Marneffe et al., 2008](https://nlp.stanford.edu/software/dependencies_manual.pdf))
 * Optimization with validation set is only to find the best hyperparameter set via knowing overfitting point. Best features are not optimized with validation, but just selected (among representative sets) after calculating test error. This is similar to model selection based on test error. 
 * Dimension reduction techniques (PCA, univariate selection) were ineffective in our problem, meaning that even with high and sparse vector, all signals were important.
-* With syntactic features elaborately designed by parsers (and bag of n-grams), logistic regression as linear model also got high performances even with complex sequential problem. (Power of feature engineering!)
+* With syntactic features elaborately designed by parsers (and bag of n-grams), logistic regression as linear model also got high performances even with complex sequential problem. (Power of feature engineering!). This is related to (Joulin et al 2016) and (Wang and Manning 2012) that mentioned if the right features are used, linear classifiers often obtain state-of-the-art performances.
 * SVM and Voting classfier were the best model in Micro-averaged F1 and Macro-averaged F1, respectively.
 * Non-linear models are more sensitive to hyperparameter setting than linear models. (even random seed to split dataset)
 
