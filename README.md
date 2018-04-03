@@ -20,8 +20,7 @@ Dataset for this research is [M.Dollmann et al. (2016)](http://www.aclweb.org/an
 
 ## Usage
 
-0. Hyperparameter Setting
-Fill hyperparameters, path info, etc. in `parameters.ini`
+0. Hyperparameter Setting: fill hyperparameters, path info, etc. in `parameters.ini`
 
 1. Data Preparation
 
