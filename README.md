@@ -71,4 +71,4 @@ python 3_train_and_test.py --use_fa --use_fb --use_fc --use_fd --model_svm
 Korea Institute of Science and Technology Information (KISTI) <br>
 University of Science and Technology (UST), Korea <br>
 University of Paderborn, Germany <br>
-2017.12 ~ 2018.05
+2016.12 ~ 2017.05
