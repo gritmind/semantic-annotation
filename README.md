@@ -4,8 +4,10 @@ It is hard for developers to clearly understand software requirements becuase of
 
 사용자에 의해 기록되는 소프트웨어 요구사항은 기본적으로 중의성과 불명확성이 존재함. 이 문제를 극복하기 위해 사전에 정의된 의미적 카테고리와 기계학습 모델을 사용하여 의미적 어노테이션을 실시함. 기존 연구의 모델보다 성능을 높이기 위해서 파서를 사용하여 구문적으로 정교한 자질 설계를 실시함. 
 
-:page_with_curl: The paper for this project has been published in its final form in the "International Journal of Advanced Science and Technology" with ISSN 2005-4238.
+The paper for this project has been published in its final form in the "International Journal of Advanced Science and Technology" with ISSN 2005-4238.
 [Improving Classifier for Semantic Annotation of Software Requirements with Elaborate Syntactic Structure](http://www.sersc.org/journals/IJAST/vol112/12.pdf), Yeongsu Kim, Seungwoo Lee, Markus Dollmann and Michaela Geierhos (pp. 122-136)
+
+Presentation for this research is in [here](https://1drv.ms/p/s!AllPqyV9kKUrsin5YbvQ5cs0GBPY).
 
 
 ## Prerequisites
