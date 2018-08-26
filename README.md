@@ -2,13 +2,13 @@
 
 It is hard for developers to clearly understand software requirements becuase of ambiguous and incomplete expressions. To solve this problem, we propose an automatic classifier for semantic annotation with pre-defined semantic categories. We expect that after obtaining the output of the classifier, the readability can be improved even with ambiguities and feedback is given to users when incomplete sentences. With small specific dataset, text preprocessing and feature engineering with elaborate syntactic structure by using parsers, were constructed for our classifier. We improve the performance of previous model in both averaged score and each category score. 
 
-* 사용자에 의해 기록되는 소프트웨어 요구사항은 기본적으로 중의성과 불명확성이 존재
-* 이 문제를 극복하기 위해 사전에 정의된 의미적 카테고리와 기계학습 모델을 사용하여 의미적 어노테이션을 실시 
-* 기존 연구의 모델보다 성능을 높이기 위해서 파서(특히 의존 파서)를 사용하여 구문적으로 정교한 자질 설계 실시 
-   * 파서 결과값의 신뢰성을 높이기 위해 데이터 전처리 실시
-   * 의존 타입들을 이용한 다양한 크기(구,절 단위)의 그룹핑 실시
-   * 의존도를 활용한 영역 분할 실시
-* 부수적으로 일반적인 전처리, 적합한 모델 선택, bag of n-gram 자질 설계 등을 실시
+* 사용자가 작성하는 소프트웨어 요구사항은 중의성과 불명확성이 존재
+* 사전에 정의된 의미 카테고리와 기계학습 모델을 사용한 의미 주석을 실시
+* 기존 모델 대비 성능 향상을 위해 구문 분석기를 활용한 정교한 구문적 자질 설계
+   - 구문 분석기 결과값의 신뢰성을 높이기 위한 데이터 전처리 실시
+   - 트리 구조와 구 정보를 활용한 위치 자질 설계
+   - 의존도 및 타입들을 이용한 다양한 크기 및 특징의 그룹 자질 설계
+* 추가로 일반적인 전처리, 적합한 모델 선택, bag of n-그램과 같은 통계 기반 자질 설계
 
 The paper for this project has been published in its final form in the "International Journal of Advanced Science and Technology" with ISSN 2005-4238.
 [Improving Classifier for Semantic Annotation of Software Requirements with Elaborate Syntactic Structure](http://www.sersc.org/journals/IJAST/vol112/12.pdf), Yeongsu Kim, Seungwoo Lee, Markus Dollmann and Michaela Geierhos (pp. 122-136)
