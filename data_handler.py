@@ -1,3 +1,5 @@
+# 데이터 로드, 출력, 전처리 등과 같은 데이터 처리를 위한 함수 집합소
+
 import pickle
 import random
 import nltk
@@ -9,8 +11,6 @@ from sklearn.preprocessing import LabelEncoder
 from keras.utils import np_utils
 seed = 7
 stemmer = PorterStemmer()
-
-
 
 ####################################################################
 ####################################################################
