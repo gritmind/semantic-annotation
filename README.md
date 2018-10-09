@@ -69,7 +69,7 @@ python 3_train_and_test.py --use_fa --use_fb --use_fc --use_fd --model_svm
    - (의존 파서) 의존도 및 타입들을 이용한 다양한 크기 및 특징의 그룹 자질 설계
 * 추가로 일반적인 전처리, 적합한 모델 선택, bag of n-그램과 같은 통계 기반 자질 설계
 
-## 
+## Summary
 * Stemming is better than lemmatization in our problem (cf. [jupyter notebook](https://github.com/gritmind/semantic-annotation/blob/master/jupyter-notebook/stemming_vs_lemmatization.ipynb))
 * Data cleaning/preprocessing, feature engineering are closely related to each other for both input and output to parsers.
 * Elaborate syntactic features are based on tree sturcture (Constituency parser) and dependent type between two words (Dependency parser). We can distinguish all kinds of clauses by using dependent type (Dependency parser is more sensitive than Constituency in terms of grouping words (e.g. *SBAR vs. advcl, acl, relcl, ..*))
