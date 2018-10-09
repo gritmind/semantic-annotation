@@ -2,13 +2,7 @@
 
 It is hard for developers to clearly understand software requirements becuase of ambiguous and incomplete expressions. To solve this problem, we propose an automatic classifier for semantic annotation with pre-defined semantic categories. We expect that after obtaining the output of the classifier, the readability can be improved even with ambiguities and feedback is given to users when incomplete sentences. With small specific dataset, text preprocessing and feature engineering with elaborate syntactic structure by using parsers, were constructed for our classifier. We improve the performance of previous model in both averaged score and each category score. 
 
-* 사용자가 작성하는 소프트웨어 요구사항은 중의성과 불명확성이 존재
-* 사전에 정의된 의미 카테고리와 기계학습 모델을 사용한 의미 주석을 실시
-* 기존 모델 대비 성능 향상을 위해 구문 분석기를 활용한 정교한 구문적 자질 설계
-   - 구문 분석기 결과값의 신뢰성을 높이기 위한 데이터 전처리 실시
-   - 트리 구조와 구 정보를 활용한 위치 자질 설계
-   - 의존도 및 타입들을 이용한 다양한 크기 및 특징의 그룹 자질 설계
-* 추가로 일반적인 전처리, 적합한 모델 선택, bag of n-그램과 같은 통계 기반 자질 설계
+![](/assets/model.PNG)
 
 The paper for this project has been published in its final form in the "International Journal of Advanced Science and Technology" with ISSN 2005-4238.
 [Improving Classifier for Semantic Annotation of Software Requirements with Elaborate Syntactic Structure](http://www.sersc.org/journals/IJAST/vol112/12.pdf), Yeongsu Kim, Seungwoo Lee, Markus Dollmann and Michaela Geierhos (pp. 122-136)
@@ -67,6 +61,13 @@ python 3_train_and_test.py --use_fa --use_fb --use_fc --use_fd --model_svm
 * Improve the model performance of previous research model, REaCT (Dollmann et al., 2016)
 
 ## Summary
+* 사용자가 작성하는 소프트웨어 요구사항은 중의성과 불명확성이 존재
+* 사전에 정의된 의미 카테고리와 기계학습 모델을 사용한 의미 주석을 실시
+* 기존 모델 대비 성능 향상을 위해 구문 분석기를 활용한 정교한 구문적 자질 설계
+   - 구문 분석기 결과값의 신뢰성을 높이기 위한 데이터 전처리 실시
+   - (구-구조 파서) 트리 구조와 구 정보를 활용한 위치 자질 설계
+   - (의존 파서) 의존도 및 타입들을 이용한 다양한 크기 및 특징의 그룹 자질 설계
+* 추가로 일반적인 전처리, 적합한 모델 선택, bag of n-그램과 같은 통계 기반 자질 설계
 * Stemming is better than lemmatization in our problem (cf. [jupyter notebook](https://github.com/gritmind/semantic-annotation/blob/master/jupyter-notebook/stemming_vs_lemmatization.ipynb))
 * Data cleaning/preprocessing, feature engineering are closely related to each other for both input and output to parsers.
 * Elaborate syntactic features are based on tree sturcture (Constituency parser) and dependent type between two words (Dependency parser). We can distinguish all kinds of clauses by using dependent type (Dependency parser is more sensitive than Constituency in terms of grouping words (e.g. *SBAR vs. advcl, acl, relcl, ..*))
