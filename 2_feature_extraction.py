@@ -1,5 +1,4 @@
-
-
+# 데이터를 자질 numerical 벡터로 변환
 
 from feature_design import *
 
