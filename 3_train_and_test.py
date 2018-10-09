@@ -1,3 +1,5 @@
+# 기계학습 모델 
+
 import numpy as np
 from matplotlib import pyplot
 import pandas as pd
