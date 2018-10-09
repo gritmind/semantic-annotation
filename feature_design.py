@@ -1,3 +1,6 @@
+# 자질 설계를 위한 함수 정의
+# 크게 dependency와 stanford parser로 
+
 from data_handler import dump, load
 import collections
 import operator
@@ -288,14 +291,11 @@ def add_spacy_parser(FE4_X_train, FE4_X_test, Xtrain, Xtest, lookup_spacy_pos, l
             #print(token, '\t', len(list(token.subtree)),len(list(token.ancestors)),len(list(token.children)), '\t\t', list(token.ancestors), '\t\t', list(token.children)  )
     #     for j, token in enumerate(spacy_sent):
     #         print(token.orth_,'\t', token.dep_,'\t', token.head.orth_, [t.orth_ for t in token.lefts], [t.orth_ for t in token.rights])
-
     #     print('-----------------------------------------------------------------------------------------------------')
 
     after = len(FE4_X_train[0][0])
     print('>> spacy dependency parser feature vector dim = ', after-before)
     return FE4_X_train, FE4_X_test
-
-
 
 
 #####################################################
@@ -305,7 +305,6 @@ def add_spacy_parser(FE4_X_train, FE4_X_test, Xtrain, Xtest, lookup_spacy_pos, l
 import nltk
 import collections
 import operator
-
 
 def idx_Root(spacy_sent):
     verb_withNsubtree = {}
@@ -323,7 +322,6 @@ def idx_Root(spacy_sent):
         return idx_root
 
 
-
 def idx_SubRoot(spacy_sent):
     no_verb = True
     verb_withNsubtree = {}
@@ -332,7 +330,6 @@ def idx_SubRoot(spacy_sent):
             verb_withNsubtree[i] = len(list(token.subtree))
             no_verb = False
     verb_withNsubtree = sorted(verb_withNsubtree.items(), key=operator.itemgetter(1), reverse=True)
-
 
     if no_verb == True: # 만약에 verb가 아예 없으면 그냥 root idx내보냄
         for i, token in enumerate(spacy_sent):
@@ -344,7 +341,6 @@ def idx_SubRoot(spacy_sent):
             return verb_withNsubtree[1][0]
         except IndexError:
             return verb_withNsubtree[0][0] # verb가 1개만 있으면 그냥 root idx내보냄
-
 
 
 ##### spacy pos
@@ -481,11 +477,9 @@ def numbering_which_ppchunk(ppchunk_numbered_sent, spacy_sent):
     prep_list = ['for','to','into','with','upon','of','as','by','on','in','unknown']
     prep_lookup_table = make_lookup_table(prep_list)
 
-
     # init feature vector per token
     feature_2d = []
     whichprep_sent = [0] * len(ppchunk_numbered_sent)
-
 
     for i, num_ in enumerate(ppchunk_numbered_sent):
 
@@ -498,8 +492,6 @@ def numbering_which_ppchunk(ppchunk_numbered_sent, spacy_sent):
 
         # not first token
         if i !=0 and num_ !=0 and ppchunk_numbered_sent[i] != ppchunk_numbered_sent[i-1]: # 전치사위치: 배열의 마지막 token이 아니고, 숫자0이 아니고, 전(t-1) token과 현재(t) token이 다를 때..
-
-
             if str(spacy_sent[i]) in prep_list:
                 whichprep_sent[i] = prep_lookup_table[str(spacy_sent[i])]+1
             else:
@@ -513,9 +505,7 @@ def numbering_which_ppchunk(ppchunk_numbered_sent, spacy_sent):
             #whichprep_sent[i] = prep_lookup_table[spacy_sent[i]]
 
     for i, num_ in enumerate(whichprep_sent):
-
         if num_ != 0:
-
             for j in range(i, len(whichprep_sent)):
                 if not j == len(whichprep_sent)-1:
                     if ppchunk_numbered_sent[j] == ppchunk_numbered_sent[j+1]:
@@ -532,20 +522,16 @@ def numbering_which_ppchunk(ppchunk_numbered_sent, spacy_sent):
             idx = num_ - 1
             whichprep_feature[idx] = 1
             feature_2d.append(whichprep_feature)
-
     return feature_2d
 
 def is_Xchunk(j, numbered_sent):
-
     if numbered_sent[j] != 0:
         return [1]
     else:
         return [0]
 
 def Xchunk_isFirstRight_fromRoot(numbered_sent, spacy_sent):
-
     isFirstRight_fromRoot_sent = [0] * len(spacy_sent)
-
     # find root word
     for i, token in enumerate(spacy_sent):
         if token.dep_ == 'ROOT':
@@ -565,24 +551,20 @@ def Xchunk_isFirstRight_fromRoot(numbered_sent, spacy_sent):
 ###################################################################################### FOR ROOT
 
 def Xchunk_isLeft_fromRoot(j, numbered_sent, spacy_sent):
-
     # find root word
     for i, token in enumerate(spacy_sent):
         if token.dep_ == 'ROOT':
             idx_root = i
-
     if j < idx_root and numbered_sent[j] != 0: # 물론 pp인 상태에서 왼쪽에 있어야 한다.
         return [1] # left from root
     else:
         return [0] # right from root
 
 def Xchunk_isRight_fromRoot(j, numbered_sent, spacy_sent):
-
     # find root word
     for i, token in enumerate(spacy_sent):
         if token.dep_ == 'ROOT':
             idx_root = i
-
     if j > idx_root and numbered_sent[j] != 0: # 물론 pp인 상태에서 왼쪽에 있어야 한다.
         return [1] # left from root
     else:
@@ -591,28 +573,22 @@ def Xchunk_isRight_fromRoot(j, numbered_sent, spacy_sent):
 ###################################################################################### FOR SUB ROOT
 
 def Xchunk_isLeft_fromSubRoot(j, numbered_sent, spacy_sent):
-
     idx_SubRt = idx_SubRoot(spacy_sent)
-
     if j < idx_SubRt and numbered_sent[j] != 0: # 물론 pp인 상태에서 왼쪽에 있어야 한다.
         return [1] # left from root
     else:
         return [0] # right from root
 
 def Xchunk_isRight_fromSubRoot(j, numbered_sent, spacy_sent):
-
     idx_SubRt = idx_SubRoot(spacy_sent)
-
     if j > idx_SubRt and numbered_sent[j] != 0: # 물론 pp인 상태에서 왼쪽에 있어야 한다.
         return [1] # left from root
     else:
         return [0] # right from root
 
 def numbering_ppchunk(npchunk_numbered_sent, spacy_sent):
-
     ppchunk_numbered_sent = [0] * len(spacy_sent)
     idx_prep = 1
-
     # Find PP pattern
     for i, num_or_token in enumerate(npchunk_numbered_sent):
 
@@ -629,10 +605,8 @@ def numbering_ppchunk(npchunk_numbered_sent, spacy_sent):
     return ppchunk_numbered_sent
 
 def numbering_pp_isJustRight_fromNP_sent(npchunk_numbered_sent, ppchunk_numbered_sent): # NP - PP
-
     pp_isjustright_fromnp = [0] * len(npchunk_numbered_sent)
     idx_prep = 1
-
     # Make pp numbered list (which is just right from np)
     for i, num in enumerate(ppchunk_numbered_sent):
         if not i == 0: # Boundary Exception: not last token
@@ -643,7 +617,6 @@ def numbering_pp_isJustRight_fromNP_sent(npchunk_numbered_sent, ppchunk_numbered
                         if ppchunk_numbered_sent[k] == ppchunk_numbered_sent[i]:
                             pp_isjustright_fromnp[k] = idx_prep
                     idx_prep += 1
-
     return pp_isjustright_fromnp
 
 def is_np_chuck(j, spacy_sent):
@@ -652,24 +625,20 @@ def is_np_chuck(j, spacy_sent):
     for chunk in list_np_chunk:
         for token in chunk:
             list_np_word.append(token)
-
     if spacy_sent[j] in list_np_word:
         return [1]
     else:
         return [0]
 
 def numbering_npchunk(spacy_sent):
-
     list_np_chunk = list(spacy_sent.noun_chunks)
     check_listnpchunk = []
     for chunk in list_np_chunk:
         temp_list = [-1] * len(str(chunk).split())
         check_listnpchunk.append(temp_list)
     check_spacysent = [0] * len(spacy_sent)
-
     ###
     for i, token in enumerate(spacy_sent):
-        #
         for m, chunk in enumerate(list_np_chunk):
             token_list = str(chunk).split()
             for n, token in enumerate(token_list):
@@ -685,7 +654,6 @@ def numbering_npchunk(spacy_sent):
 
 
 def is_first_np_chunk(j, chunk_numbered_sent):
-
     if chunk_numbered_sent[j] == 1:
         return [1]
     else:
@@ -693,38 +661,31 @@ def is_first_np_chunk(j, chunk_numbered_sent):
 
 def is_last_np_chunk(j, chunk_numbered_sent, spacy_sent):
     list_np_chunk = list(spacy_sent.noun_chunks)
-
     if chunk_numbered_sent[j] == len(list_np_chunk):
         return [1]
     else:
         return [0]
 
 
-
 def np_isLeft_fromRoot(j, chunk_numbered_sent, spacy_sent):
-
     # find root word
     for i, token in enumerate(spacy_sent):
         if token.dep_ == 'ROOT':
             idx_root = i
-
     if j < idx_root and chunk_numbered_sent[j] != 0: # 물론 np인 상태에서 왼쪽에 있어야 한다.
         return [1] # left from root
     else:
         return [0] # right from root
 
 def np_isRight_fromRoot(j, chunk_numbered_sent, spacy_sent):
-
     # find root word
     for i, token in enumerate(spacy_sent):
         if token.dep_ == 'ROOT':
             idx_root = i
-
     if j > idx_root and chunk_numbered_sent[j] != 0: # # 물론 np인 상태에서 왼쪽에 있어야 한다.
         return [1] # np인 동시에 오른쪽
     else:
         return [0]
-
 
 ##### dependency parsing
 
@@ -779,7 +740,6 @@ def remove_duplicate(headList_to_root):
 
 def vectorized_dep_feature(dep_, lookup_table):
     dep_feature = [0] * len(lookup_table)
-
     try:
         lookup_table[dep_]
     except KeyError:
@@ -789,7 +749,6 @@ def vectorized_dep_feature(dep_, lookup_table):
     return dep_feature
 
 def high_level_implicit_grouping(headpath_to_root):
-
     # Dependency Implicitly Grouping Dictionary
     ### For dependent look-up table
     list_acl = ['dobj', 'nsubj', 'xcomp', 'pobj', 'ROOT', 'attr', 'nsubjpass', 'conj']
@@ -885,7 +844,6 @@ def high_level_implicit_grouping(headpath_to_root):
                         #nsubjpass_Vec[0] = 1
                         nsubjpass_Vec = vectorized_dep_feature(headpath_to_root[i+1], lookup_table_nsubjpass)
                         break
-
     return root_Vec + advcl_Vec + acl_Vec + relcl_Vec + prep_Vec + dobj_Vec + pobj_Vec + nsubj_Vec + nsubjpass_Vec
 
 
@@ -912,13 +870,10 @@ def what_is_myDependent(token, lookup):
     token_feature[lookup[token.head.dep_]] = 1
     return token_feature
 
-
 def what_is_headDependent(token, lookup):
-
     token_feature = [0] * len(lookup)
     token_feature[lookup[token.head.dep_]] = 1
     return token_feature
-
 
 def headList_to_root(token): # REFERENCE: https://github.com/NSchrading/intro-spacy-nlp
     # Write a function that walks up the syntactic tree of the given token and
@@ -949,74 +904,56 @@ def lenMax_amongSubtreeList_toRoot(spacy_sent):
             max_len = len(list(token.subtree))
     return max_len
 
-
 def normalization(max, min, value):
     normalized_value = (value - min) / (max - min) # normalizing the range of value from zero to one.
     return [normalized_value] # list
 
-
 def FE_dependency(j, sentence, triple_list, outbounder_or_inbounder, dict_dependency):
-
     feature_dependency = [0] * len(dict_dependency)
-
     if outbounder_or_inbounder == 0: # inbounder
         for triple in triple_list:
             outbounder = triple[0][0]
             dependency = triple[1]
-
             if sentence[j] == outbounder:
                 feature_dependency[dict_dependency[dependency]] = 1
-
     else: # inbounder
         for triple in triple_list:
             dependency = triple[1]
             inbounder = triple[2][0]
-
             if sentence[j] == inbounder:
                 feature_dependency[dict_dependency[dependency]] = 1
-
     return feature_dependency
 
 def normalized_list_n_dependencies(list_n_dependencies):
-
     min_value = 0 # min(list_n_dependencies)
     max_value = max(list_n_dependencies)
-
     normalized_list = [0] * len(list_n_dependencies)
     for i, value in enumerate(list_n_dependencies):
         normalized_list[i] = (list_n_dependencies[i] - min_value) / (max_value - min_value)
-
     return normalized_list
 
 def vectorizing_using_list_dependencies(j_plus_alpha, sentence, normalized_li_n_dep):
-
     # exception for first
     if j_plus_alpha < 0:
         return [0]
-
     # exception for last
     try:
         sentence[j_plus_alpha]
     except IndexError:
         return [0]
-
     # good
     return [normalized_li_n_dep[j_plus_alpha]]
 
 
-
 def FE_n_dependencies(j, sentence, normalized_li_n_dep, window_size_n_dep):
-
     if window_size_n_dep == 1:
         t__0 = vectorizing_using_list_dependencies(j, sentence, normalized_li_n_dep)
         return t__0
-
     elif window_size_n_dep == 3:
         t_m1 = vectorizing_using_list_dependencies(j-1, sentence, normalized_li_n_dep)
         t__0 = vectorizing_using_list_dependencies(j, sentence, normalized_li_n_dep)
         t_p1 = vectorizing_using_list_dependencies(j+1, sentence, normalized_li_n_dep)
         return t_m1 + t__0 + t_p1
-
     elif window_size_n_dep == 5:
         t_m2 = vectorizing_using_list_dependencies(j-2, sentence, normalized_li_n_dep)
         t_m1 = vectorizing_using_list_dependencies(j-1, sentence, normalized_li_n_dep)
@@ -1024,7 +961,6 @@ def FE_n_dependencies(j, sentence, normalized_li_n_dep, window_size_n_dep):
         t_p1 = vectorizing_using_list_dependencies(j+1, sentence, normalized_li_n_dep)
         t_p2 = vectorizing_using_list_dependencies(j+2, sentence, normalized_li_n_dep)
         return t_m2 + t_m1 + t__0 + t_p1 + t_p2
-
     elif window_size_n_dep == 7:
         t_m3 = vectorizing_using_list_dependencies(j-3, sentence, normalized_li_n_dep)
         t_m2 = vectorizing_using_list_dependencies(j-2, sentence, normalized_li_n_dep)
@@ -1034,7 +970,6 @@ def FE_n_dependencies(j, sentence, normalized_li_n_dep, window_size_n_dep):
         t_p2 = vectorizing_using_list_dependencies(j+2, sentence, normalized_li_n_dep)
         t_p3 = vectorizing_using_list_dependencies(j+3, sentence, normalized_li_n_dep)
         return t_m3 + t_m2 + t_m1 + t__0 + t_p1 + t_p2 + t_p3
-
     elif window_size_n_dep == 9:
         t_m4 = vectorizing_using_list_dependencies(j-4, sentence, normalized_li_n_dep)
         t_m3 = vectorizing_using_list_dependencies(j-3, sentence, normalized_li_n_dep)
@@ -1046,7 +981,6 @@ def FE_n_dependencies(j, sentence, normalized_li_n_dep, window_size_n_dep):
         t_p3 = vectorizing_using_list_dependencies(j+3, sentence, normalized_li_n_dep)
         t_p4 = vectorizing_using_list_dependencies(j+4, sentence, normalized_li_n_dep)
         return t_m4 + t_m3 + t_m2 + t_m1 + t__0 + t_p1 + t_p2 + t_p3 + t_p4
-
     elif window_size_n_dep == 11:
         t_m5 = vectorizing_using_list_dependencies(j-5, sentence, normalized_li_n_dep)
         t_m4 = vectorizing_using_list_dependencies(j-4, sentence, normalized_li_n_dep)
@@ -1060,7 +994,6 @@ def FE_n_dependencies(j, sentence, normalized_li_n_dep, window_size_n_dep):
         t_p4 = vectorizing_using_list_dependencies(j+4, sentence, normalized_li_n_dep)
         t_p5 = vectorizing_using_list_dependencies(j+5, sentence, normalized_li_n_dep)
         return t_m5 + t_m4 + t_m3 + t_m2 + t_m1 + t__0 + t_p1 + t_p2 + t_p3 + t_p4 + t_p5
-
     elif window_size_n_dep == 13:
         t_m6 = vectorizing_using_list_dependencies(j-6, sentence, normalized_li_n_dep)
         t_m5 = vectorizing_using_list_dependencies(j-5, sentence, normalized_li_n_dep)
@@ -1076,7 +1009,6 @@ def FE_n_dependencies(j, sentence, normalized_li_n_dep, window_size_n_dep):
         t_p5 = vectorizing_using_list_dependencies(j+5, sentence, normalized_li_n_dep)
         t_p6 = vectorizing_using_list_dependencies(j+6, sentence, normalized_li_n_dep)
         return t_m6 + t_m5 + t_m4 + t_m3 + t_m2 + t_m1 + t__0 + t_p1 + t_p2 + t_p3 + t_p4 + t_p5 + t_p6
-
     elif window_size_n_dep == 15:
         t_m7 = vectorizing_using_list_dependencies(j-7, sentence, normalized_li_n_dep)
         t_m6 = vectorizing_using_list_dependencies(j-6, sentence, normalized_li_n_dep)
@@ -1103,24 +1035,20 @@ def add_rule(FE3_X_train, FE3_X_test, pre_X_train, pre_X_test):
     before_fe = len(FE3_X_train[0][0])
     for i, sentence in enumerate(pre_X_train): # for training data
         detokenized_sent = detokenizer.detokenize(sentence, return_str=True)
-
         for j, token in enumerate(sentence):
             FE3_X_train[i][j] += check_wouldbenice_pattern(detokenized_sent)
             FE3_X_train[i][j] += is_auxVerb_leftside(j, sentence)
             FE3_X_train[i][j] += is_sothatORif_leftside(j, sentence)
-
             # for sub action, sub obect, ...
             FE3_X_train[i][j] += is_causative_verb(j, sentence) # 사역동사
             FE3_X_train[i][j] += is_abstract_noun(j, sentence) # 추상명사
 
     for i, sentence in enumerate(pre_X_test): # for training data
         detokenized_sent = detokenizer.detokenize(sentence, return_str=True)
-
         for j, token in enumerate(sentence):
             FE3_X_test[i][j] += check_wouldbenice_pattern(detokenized_sent)
             FE3_X_test[i][j] += is_auxVerb_leftside(j, sentence)
             FE3_X_test[i][j] += is_sothatORif_leftside(j, sentence)
-
             # for sub action, sub obect, ...
             FE3_X_test[i][j] += is_causative_verb(j, sentence) # 사역동사
             FE3_X_test[i][j] += is_abstract_noun(j, sentence) # 추상명사
@@ -1147,9 +1075,7 @@ def is_abstract_noun(j, sentence):
     return [0]
 
 def is_auxVerb_leftside(j_alpha, sentence):
-
     auxiliary_verb_set = ['shall', 'can', 'want', 'would', 'could', 'should', 'must', 'will', 'may', 'might']
-
     for j in range(0, j_alpha):
         if sentence[j] in auxiliary_verb_set:
             return [1]
@@ -1180,9 +1106,7 @@ def check_wouldbenice_pattern(detokenized_sentence):
         return [0]
 
 def is_auxVerb_leftside(j_alpha, sentence):
-
     auxiliary_verb_set = ['shall', 'can', 'want', 'would', 'could', 'should', 'must', 'will', 'may', 'might']
-
     for j in range(0, j_alpha):
         if sentence[j] in auxiliary_verb_set:
             return [1]
@@ -1191,7 +1115,6 @@ def is_auxVerb_leftside(j_alpha, sentence):
 
 
 def is_sothatORif_leftside(j_alpha, sentence):
-
     featureVec = [0, 0]
     sothatCheck = False
     sothatIndex = -1
@@ -1246,7 +1169,6 @@ def convert_dummy(value):
     return dummy_feature
 
 def position_which(sentence):
-
     # which가 문장에서 여러번 나올 수 있으나
     # 그냥 앞에서부터 추적해서 제일 먼저 나온 which의 position을 return한다.
     for i, token in enumerate(sentence):
