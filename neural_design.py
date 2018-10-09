@@ -1,3 +1,5 @@
+# 신경망 모델 (FNN, CNN, RNN) 함수 정의 (단순히 하나의 함수로 불러올 수 있도록)
+
 from data_handler import *
 import numpy as np
 import math
