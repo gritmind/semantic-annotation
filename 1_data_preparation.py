@@ -1,3 +1,5 @@
+# 데이터 전처리, 어휘 사전, lookup table 만들기 등 재료를 준비하는 단계
+
 import argparse
 from configparser import ConfigParser
 import pickle
