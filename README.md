@@ -5,7 +5,7 @@ It is hard for developers to clearly understand software requirements becuase of
 ![](/assets/model.PNG)
 
 The paper for this project has been published in its final form in the "International Journal of Advanced Science and Technology" with ISSN 2005-4238.
-[Improving Classifier for Semantic Annotation of Software Requirements with Elaborate Syntactic Structure](https://1drv.ms/w/s!AllPqyV9kKUrwxvf6305YOo0SLFt), Yeongsu Kim, Seungwoo Lee, Markus Dollmann and Michaela Geierhos (pp. 122-136)
+[Improving Classifier for Semantic Annotation of Software Requirements with Elaborate Syntactic Structure](https://1drv.ms/b/s!AllPqyV9kKUrwx7uQT8j9DsEtAqY), Yeongsu Kim, Seungwoo Lee, Markus Dollmann and Michaela Geierhos (pp. 122-136)
 
 Presentation for this research is in [here](https://1drv.ms/p/s!AllPqyV9kKUrsin5YbvQ5cs0GBPY).
 
